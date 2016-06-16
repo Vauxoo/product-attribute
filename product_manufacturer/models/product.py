@@ -26,5 +26,11 @@ class ProductTemplate(models.Model):
 
     manufacturer = fields.Many2one('res.partner', 'Manufacturer')
     manufacturer_pname = fields.Char('Manufacturer Product Name')
-    manufacturer_pref = fields.Char('Manufacturer Product Code')
     manufacturer_purl = fields.Char('Manufacturer Product URL')
+
+
+class ProductProduct(models.Model):
+
+    _inherit = 'product.product'
+
+    manufacturer_pref = fields.Char('Manufacturer Product Code')
