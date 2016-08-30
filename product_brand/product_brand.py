@@ -1,4 +1,4 @@
-# -*- encoding: utf-8 -*-
+# -*- coding: utf-8 -*-
 ###############################################################################
 #                                                                             #
 # product_brand for Odoo                                                      #
@@ -53,6 +53,7 @@ class ProductBrand(models.Model):
     products_count = fields.Integer(
         string='Number of products',
         compute='_get_products_count',
+        store=True,
     )
 
     @api.one
