@@ -2,10 +2,6 @@
    :target: https://www.gnu.org/licenses/agpl
    :alt: License: AGPL-3
 
-===============
-Product Profile
-===============
-
 This module provides easier products configuration (in one click).
 It allows to configure a product template with only one field.
 
