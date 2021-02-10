@@ -32,10 +32,20 @@ class ProductTemplate(models.Model):
             # We need to convert the price if the pricelist and seller have
             # different currencies so the price have the pricelist currency
             if rule.currency_id != seller.currency_id:
-                convert_date = date or self.env.context.get(
-                    'date', fields.Date.today())
-                price = seller.currency_id._convert(
-                    price, rule.currency_id, seller.company_id, convert_date)
+                company = seller.company_id
+                custom_rate = self.env.context.get('agreement_custom_rate', 1.0)
+                to_cur = rule.currency_id
+                from_cur = seller.currency_id
+                if custom_rate != 1 and to_cur != from_cur:
+                    if to_cur == company.currency_id and from_cur == company.index_based_currency_id:
+                        price *= custom_rate
+                    if to_cur == company.index_based_currency_id and from_cur == company.currency_id:
+                        price /= custom_rate
+                else:
+                    convert_date = date or self.env.context.get(
+                        'date', fields.Date.today())
+                    price = seller.currency_id._convert(
+                        price, rule.currency_id, seller.company_id, convert_date, round=False)
 
             # We have to replicate this logic in this method as pricelist
             # method are atomic and we can't hack inside.
