@@ -14,6 +14,7 @@ class ProductTemplate(models.Model):
         """Method for getting the price from supplier info."""
         self.ensure_one()
         price = 0.0
+        seller = self.env['product.supplierinfo']
         product = self.product_variant_id
         if product_id:
             product = product.browse(product_id)
@@ -65,7 +66,7 @@ class ProductTemplate(models.Model):
             if rule.price_max_margin:
                 price_max_margin = convert_to_price_uom(rule.price_max_margin)
                 price = min(price, price_limit + price_max_margin)
-        return price
+        return (price, seller.id)
 
     def price_compute(self, price_type, uom=False, currency=False,
                       company=False):

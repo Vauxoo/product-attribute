@@ -18,18 +18,17 @@ class ProductPricelist(models.Model):
         result = super(ProductPricelist, self)._compute_price_rule(
             products_qty_partner, date, uom_id)
         # Make sure all rule records are fetched at once at put in cache
-        rule_obj.browse(x[1] for x in result.values()).mapped('price_discount')
+        rule_obj.browse(x[-1] for x in result.values()).mapped('price_discount')
         for product, qty, _partner in products_qty_partner:
-            rule = rule_obj.browse(result[product.id][1])
+            rule = rule_obj.browse(result[product.id][1] if result.get(product.id) else [])
             if rule.compute_price == 'formula' and rule.base == 'supplierinfo':
                 context = self.env.context
-                result[product.id] = (
-                    product._get_supplierinfo_pricelist_price(
-                        rule,
-                        date=date or context.get('date', fields.Date.today()),
-                        quantity=qty,
-                    ), rule.id,
-                )
+
+                vals = product._get_supplierinfo_pricelist_price(
+                    rule, date=date or context.get('date', fields.Date.today()), quantity=qty,)
+
+                result[product.id] = (vals[0], rule.id)
+                result['supplierinfo_id_%s' % product.id] = (vals[1], rule.id)
         return result
 
 
