@@ -20,12 +20,14 @@ class ProductPricelist(models.Model):
         # Make sure all rule records are fetched at once at put in cache
         rule_obj.browse(x[-1] for x in result.values()).mapped('price_discount')
         for product, qty, _partner in products_qty_partner:
-            rule = rule_obj.browse(result[product.id][1] if result.get(product.id) else [])
+            rule = rule_obj.browse(
+                result[product.id][1] if result.get(product.id) else [])
             if rule.compute_price == 'formula' and rule.base == 'supplierinfo':
                 context = self.env.context
 
                 vals = product._get_supplierinfo_pricelist_price(
-                    rule, date=date or context.get('date', fields.Date.today()), quantity=qty,)
+                    rule, date=date or context.get(
+                        'date', fields.Date.today()), quantity=qty,)
 
                 result[product.id] = (vals[0], rule.id)
                 result['supplierinfo_id_%s' % product.id] = (vals[1], rule.id)
