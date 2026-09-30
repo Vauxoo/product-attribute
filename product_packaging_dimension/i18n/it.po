@@ -17,14 +17,20 @@ msgstr ""
 "X-Generator: Weblate 4.17\n"
 
 #. module: product_packaging_dimension
-#: model_terms:ir.ui.view,arch_db:product_packaging_dimension.product_packaging_form_view_inherit
+#: model:ir.model,name:product_packaging_dimension.model_res_config_settings
+msgid "Config Settings"
+msgstr ""
+
+#. module: product_packaging_dimension
+#: model_terms:ir.ui.view,arch_db:product_packaging_dimension.product_packaging_form_view
 msgid "Dimensions"
 msgstr "Dimensioni"
 
 #. module: product_packaging_dimension
-#: model:ir.model.fields,field_description:product_packaging_dimension.field_product_packaging__length_uom_id
-msgid "Dimensions Units of Measure"
-msgstr "Unità di misura per le dimensioni"
+#: model:ir.model.fields,field_description:product_packaging_dimension.field_product_packaging__display_name
+#: model:ir.model.fields,field_description:product_packaging_dimension.field_res_config_settings__display_name
+msgid "Display Name"
+msgstr ""
 
 #. module: product_packaging_dimension
 #: model:ir.model.fields,field_description:product_packaging_dimension.field_product_packaging__height
@@ -35,6 +41,12 @@ msgstr "Altezza"
 #: model:ir.model.constraint,message:product_packaging_dimension.constraint_product_packaging_positive_height
 msgid "Height must be positive"
 msgstr "L'altezza deve essere positiva"
+
+#. module: product_packaging_dimension
+#: model:ir.model.fields,field_description:product_packaging_dimension.field_product_packaging__id
+#: model:ir.model.fields,field_description:product_packaging_dimension.field_res_config_settings__id
+msgid "ID"
+msgstr ""
 
 #. module: product_packaging_dimension
 #: model:ir.model.fields,field_description:product_packaging_dimension.field_product_packaging__packaging_length
@@ -52,9 +64,19 @@ msgid "Length unit of measure label"
 msgstr "Etichetta unità di misura lunghezza"
 
 #. module: product_packaging_dimension
-#: model:ir.model.fields,help:product_packaging_dimension.field_product_packaging__volume_uom_id
-msgid "Packaging volume unit of measure"
-msgstr "Unità di misura per il volume dell'imballaggio"
+#: model:ir.model.fields,help:product_packaging_dimension.field_product_packaging__height
+msgid "Packaging Height"
+msgstr ""
+
+#. module: product_packaging_dimension
+#: model:ir.model.fields,help:product_packaging_dimension.field_product_packaging__packaging_length
+msgid "Packaging Length"
+msgstr "Lunghezza imballaggio"
+
+#. module: product_packaging_dimension
+#: model:ir.model.fields,help:product_packaging_dimension.field_product_packaging__width
+msgid "Packaging Width"
+msgstr ""
 
 #. module: product_packaging_dimension
 #: model:ir.model,name:product_packaging_dimension.model_product_packaging
@@ -62,62 +84,9 @@ msgid "Product Packaging"
 msgstr "Imballaggio prodotto"
 
 #. module: product_packaging_dimension
-#: model:ir.model.fields,help:product_packaging_dimension.field_product_packaging__volume
-msgid "The Packaging volume"
-msgstr "Volume dell'imballaggio"
-
-#. module: product_packaging_dimension
-#: model_terms:ir.ui.view,arch_db:product_packaging_dimension.product_packaging_form_view_inherit
-msgid "Units of Measure"
-msgstr "Unità di misura"
-
-#. module: product_packaging_dimension
-#: model:ir.model.fields,help:product_packaging_dimension.field_product_packaging__length_uom_id
-msgid "UoM for packaging length, height, width (based on lenght UoM)"
-msgstr ""
-"UdM per lunghezza, altezza, larghezza (basato sull'UdM della lunghezza) "
-"dell'imballaggio"
-
-#. module: product_packaging_dimension
 #: model:ir.model.fields,field_description:product_packaging_dimension.field_product_packaging__volume
 msgid "Volume"
 msgstr "Volume"
-
-#. module: product_packaging_dimension
-#: model:ir.model.fields,field_description:product_packaging_dimension.field_product_packaging__volume_uom_name
-msgid "Volume Unit of Measure label"
-msgstr "Etichetta unità di misura volume"
-
-#. module: product_packaging_dimension
-#: model:ir.model.fields,field_description:product_packaging_dimension.field_product_packaging__volume_uom_id
-msgid "Volume Units of Measure"
-msgstr "Unità di misura del volume"
-
-#. module: product_packaging_dimension
-#: model:ir.model.fields,field_description:product_packaging_dimension.field_product_packaging__weight
-#: model_terms:ir.ui.view,arch_db:product_packaging_dimension.product_packaging_form_view_inherit
-msgid "Weight"
-msgstr "Peso"
-
-#. module: product_packaging_dimension
-#: model:ir.model.fields,help:product_packaging_dimension.field_product_packaging__weight_uom_id
-msgid "Weight Unit of Measure"
-msgstr "Unità di misura del peso"
-
-#. module: product_packaging_dimension
-#: model:ir.model.fields,field_description:product_packaging_dimension.field_product_packaging__weight_uom_id
-msgid "Weight Units of Measure"
-msgstr "Unità di misura del peso"
-
-#. module: product_packaging_dimension
-#: model:ir.model.constraint,message:product_packaging_dimension.constraint_product_packaging_positive_weight
-msgid "Weight must be positive"
-msgstr "Il peso deve essere positivo"
-
-#. module: product_packaging_dimension
-#: model:ir.model.fields,field_description:product_packaging_dimension.field_product_packaging__weight_uom_name
-msgid "Weight unit of measure label"
-msgstr "Etichetta unità di misura peso"
 
 #. module: product_packaging_dimension
 #: model:ir.model.fields,field_description:product_packaging_dimension.field_product_packaging__width
@@ -129,11 +98,46 @@ msgstr "Larghezza"
 msgid "Width must be positive"
 msgstr "La larghezza deve essere positiva"
 
+#~ msgid "Dimensions Units of Measure"
+#~ msgstr "Unità di misura per le dimensioni"
+
+#~ msgid "Packaging volume unit of measure"
+#~ msgstr "Unità di misura per il volume dell'imballaggio"
+
+#~ msgid "The Packaging volume"
+#~ msgstr "Volume dell'imballaggio"
+
+#~ msgid "Units of Measure"
+#~ msgstr "Unità di misura"
+
+#~ msgid "UoM for packaging length, height, width (based on lenght UoM)"
+#~ msgstr ""
+#~ "UdM per lunghezza, altezza, larghezza (basato sull'UdM della lunghezza) "
+#~ "dell'imballaggio"
+
+#~ msgid "Volume Unit of Measure label"
+#~ msgstr "Etichetta unità di misura volume"
+
+#~ msgid "Volume Units of Measure"
+#~ msgstr "Unità di misura del volume"
+
+#~ msgid "Weight"
+#~ msgstr "Peso"
+
+#~ msgid "Weight Unit of Measure"
+#~ msgstr "Unità di misura del peso"
+
+#~ msgid "Weight Units of Measure"
+#~ msgstr "Unità di misura del peso"
+
+#~ msgid "Weight must be positive"
+#~ msgstr "Il peso deve essere positivo"
+
+#~ msgid "Weight unit of measure label"
+#~ msgstr "Etichetta unità di misura peso"
+
 #~ msgid "Max Weight must be positive"
 #~ msgstr "Il peso massimo deve essere positivo"
 
 #~ msgid "Maximum Weight"
 #~ msgstr "Peso massimo"
-
-#~ msgid "Packaging Length"
-#~ msgstr "Lunghezza imballaggio"
